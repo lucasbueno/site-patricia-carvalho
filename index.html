@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drª. Patricia Carvalho - Hematologia e Oncohematologia</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configuração do Tailwind para suportar as cores do brand book
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bege': '#F2EEE9',
+                        'vinho': '#6C0D24',
+                        'dourado': '#906211',
+                        'dourado-claro': '#EDC365',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Aplicando as diretrizes do Brand Book */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            /* Cor Bege: #F2EEE9 (Afeto e Acolhimento) */
+            background-color: #F2EEE9;
+            /* Fonte 'Nicky Sans' (substituída por 'Inter') */
+            font-family: 'Inter', sans-serif;
+            color: #3a3a3a; /* Cinza escuro para legibilidade */
+        }
+        
+        /* Fonte 'Saldo' (substituída por 'Playfair Display') */
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+            /* Cor Vinho: #6C0D24 (Força e Autoridade) */
+            color: #6C0D24;
+        }
+
+        /* (config do Tailwind movida para <script> acima) */
+
+        /* Botão de Ação Principal (CTA) */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem; /* 12px 28px */
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-decoration: none;
+        }
+        .cta-button svg {
+            width: 1.25rem; /* 20px */
+            height: 1.25rem; /* 20px */
+            margin-right: 0.5rem; /* 8px */
+        }
+        
+        /* Variação CTA WhatsApp */
+        .cta-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+        }
+        .cta-whatsapp:hover {
+            background-color: #1DAE54;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(30, 174, 84, 0.2);
+        }
+        
+        /* Variação CTA Secundário (Vinho) */
+        .cta-primary {
+            background-color: #6C0D24; /* Vinho */
+            color: #F2EEE9; /* Bege */
+        }
+        .cta-primary:hover {
+            background-color: #5a0b1e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(108, 13, 36, 0.2);
+        }
+        
+        /* Variação CTA Terciário (Locais) */
+        .cta-secondary {
+            background-color: transparent;
+            color: #6C0D24; /* Vinho */
+            border: 2px solid #6C0D24;
+        }
+        .cta-secondary:hover {
+            background-color: #6C0D24;
+            color: #F2EEE9;
+        }
+        
+        /* Header com transição no scroll */
+        #main-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* --- NOVO: Estilos para Fade-in --- */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- Fim do Novo Estilo --- */
+    </style>
+</head>
+<body class="bg-bege">
+
+    <!-- WhatsApp Flutuante (Foco na conversão) -->
+    <a href="https://api.whatsapp.com/send/?phone=5548999322544&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Drª.%20Patricia.&type=phone_number&app_absent=0" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 p-4 bg-green-500 rounded-full shadow-lg cta-whatsapp hover:bg-green-600 transition-all duration-300 transform hover:scale-110"
+       aria-label="Agendar consulta pelo WhatsApp">
+        <!-- Ícone WhatsApp SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-white m-0">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.55C8.76 21.36 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M12.04 20.13C10.5 20.13 9 19.7 7.7 18.91L7.33 18.69L3.9 19.6L4.82 16.29L4.58 15.91C3.73 14.54 3.28 12.98 3.28 11.33C3.28 7.11 7.26 3.69 12.04 3.69C16.82 3.69 20.8 7.11 20.8 11.33C20.8 15.54 16.82 20.13 12.04 20.13M16.56 14.45C16.31 14.32 15.11 13.75 14.88 13.67C14.66 13.58 14.5 13.54 14.35 13.76C14.19 13.98 13.71 14.55 13.55 14.73C13.4 14.9 13.25 14.92 13 14.8C12.75 14.68 11.91 14.39 10.91 13.49C10.11 12.79 9.59 11.94 9.42 11.66C9.26 11.38 9.36 11.26 9.49 11.13C9.6 11.02 9.73 10.85 9.88 10.67C10.01 10.51 10.06 10.4 10.18 10.18C10.3 9.96 10.25 9.78 10.17 9.63C10.09 9.48 9.58 8.2 9.36 7.67C9.13 7.16 8.91 7.23 8.74 7.23C8.58 7.23 8.42 7.23 8.26 7.23C8.1 7.23 7.82 7.3 7.59 7.52C7.36 7.74 6.79 8.26 6.79 9.38C6.79 10.5 7.63 11.55 7.75 11.7C7.88 11.86 9.5 14.39 11.85 15.35C12.41 15.59 12.82 15.73 13.14 15.84C13.7 16.02 14.18 15.97 14.58 15.91C15.02 15.82 16.06 15.26 16.29 14.69C16.51 14.12 16.51 13.67 16.44 13.54C16.36 13.41 16.21 13.34 16.06 13.26C15.9 13.18 15.75 13.14 15.6 13.1C15.45 13.06 15.3 13.02 15.15 13C14.99 12.96 14.84 12.92 14.7 12.88C14.55 12.84 14.4 12.8 14.25 12.76C14.1 12.72 13.95 12.68 13.8 12.64L16.56 14.45Z" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header id="main-header" class="bg-white sticky top-0 z-40 shadow-md">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo Drª. Patricia Carvalho" class="h-10 w-auto">
+                <div class="font-serif text-xl md:text-2xl text-vinho">
+                    PATRICIA CARVALHO
+                </div>
+            </div>
+            
+            <!-- CTA Desktop -->
+            <div class="hidden md:block">
+                <a href="https://api.whatsapp.com/send/?phone=5548999322544&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Drª.%20Patricia.&type=phone_number&app_absent=0" 
+                   target="_blank" 
+                   class="cta-button cta-primary">
+                   Agendar Consulta
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="relative pt-16 pb-24 md:pt-24 md:pb-32 px-4 text-center overflow-hidden fade-in-element">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold mb-5">
+                    Hematologia & Oncohematologia
+                </h1>
+                <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-10">
+                    Para cada fase da vida, um cuidado que respeita, acolhe e entende.
+                </p>
+                
+                <!-- CTA Principal (WhatsApp) -->
+                <a href="https://api.whatsapp.com/send/?phone=5548999322544&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Drª.%20Patricia.&type=phone_number&app_absent=0" 
+                   target="_blank" 
+                   class="cta-button cta-whatsapp text-lg px-10 py-4">
+                    <!-- Ícone WhatsApp SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.55C8.76 21.36 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M12.04 20.13C10.5 20.13 9 19.7 7.7 18.91L7.33 18.69L3.9 19.6L4.82 16.29L4.58 15.91C3.73 14.54 3.28 12.98 3.28 11.33C3.28 7.11 7.26 3.69 12.04 3.69C16.82 3.69 20.8 7.11 20.8 11.33C20.8 15.54 16.82 20.13 12.04 20.13M16.56 14.45C16.31 14.32 15.11 13.75 14.88 13.67C14.66 13.58 14.5 13.54 14.35 13.76C14.19 13.98 13.71 14.55 13.55 14.73C13.4 14.9 13.25 14.92 13 14.8C12.75 14.68 11.91 14.39 10.91 13.49C10.11 12.79 9.59 11.94 9.42 11.66C9.26 11.38 9.36 11.26 9.49 11.13C9.6 11.02 9.73 10.85 9.88 10.67C10.01 10.51 10.06 10.4 10.18 10.18C10.3 9.96 10.25 9.78 10.17 9.63C10.09 9.48 9.58 8.2 9.36 7.67C9.13 7.16 8.91 7.23 8.74 7.23C8.58 7.23 8.42 7.23 8.26 7.23C8.1 7.23 7.82 7.3 7.59 7.52C7.36 7.74 6.79 8.26 6.79 9.38C6.79 10.5 7.63 11.55 7.75 11.7C7.88 11.86 9.5 14.39 11.85 15.35C12.41 15.59 12.82 15.73 13.14 15.84C13.7 16.02 14.18 15.97 14.58 15.91C15.02 15.82 16.06 15.26 16.29 14.69C16.51 14.12 16.51 13.67 16.44 13.54C16.36 13.41 16.21 13.34 16.06 13.26C15.9 13.18 15.75 13.14 15.6 13.1C15.45 13.06 15.3 13.02 15.15 13C14.99 12.96 14.84 12.92 14.7 12.88C14.55 12.84 14.4 12.8 14.25 12.76C14.1 12.72 13.95 12.68 13.8 12.64L16.56 14.45Z" />
+                    </svg>
+                    Agendar pelo WhatsApp
+                </a>
+                
+                <p class="mt-6 text-sm text-gray-600">Atendimento adulto, presencial ou online.</p>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section class="py-20 md:py-28 bg-white/50 border-y-2 border-dourado-claro/50 fade-in-element">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        Medicina como propósito
+                    </h2>
+                    <blockquote class="text-lg leading-relaxed text-gray-800 italic border-l-4 border-vinho pl-6 space-y-5">
+                        <p>A Medicina é para mim muito mais do que está escrito nos livros e muito mais do que a cura pela droga, ela é parte de quem eu sou hoje.</p>
+                        <p>Com ela, aprendi um pouco mais sobre a fugacidade, a contradança dos nossos caminhos e a necessidade da dedicação de grande parte do meu tempo com o propósito de me tornar uma profissional de excelência no cuidado de pacientes complexos e graves.</p>
+                        <p>Meu propósito é conciliar alívio e conforto, durante o processo de tratamento de algumas doenças, perante o sofrimento faceado à inexistência da cura, ou no caminho até ela.</p>
+                    </blockquote>
+                    <p class="mt-6 text-lg font-serif font-bold text-vinho">
+                        Drª. Patricia Carvalho
+                    </p>
+                </div>
+                <div class="order-1 md:order-2">
+                    <!-- Imagem evocando 'cuidado' e 'calma', usando cores do brand book -->
+                    <img src="patricia-natureza.jpeg" 
+                         alt="Imagem simbólica de cuidado e acolhimento"
+                         class="rounded-xl shadow-xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="py-20 md:py-28 fade-in-element">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        Atendimento clínico focado em você
+                    </h2>
+                    <p class="text-lg text-gray-700">
+                        Cada pessoa é única, e o cuidado também precisa ser. Meu foco está em oferecer um atendimento que respeita sua história, com escuta, empatia e a profundidade técnica que a medicina exige.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Card 1: Hematologia -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-vinho">
+                        <!-- Ícone SVG: Gota (Sangue) -->
+                        <svg class="w-12 h-12 text-vinho mx-auto mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+                        <h3 class="text-2xl font-bold mb-3">Hematologia clínica</h3>
+                        <p class="text-gray-600">
+                            Diagnóstico e tratamento de doenças do sangue, como anemias, tromboses e outras alterações hematológicas, com foco no cuidado integral.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 2: Oncohematologia -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-vinho">
+                        <!-- Ícone SVG: Fita (Câncer) -->
+                        <svg class="w-12 h-12 text-vinho mx-auto mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 12.5A5.5 5.5 0 0112.5 7h0A5.5 5.5 0 0118 12.5v.5a5.5 5.5 0 01-11 0v-.5zM12 7V4m0 16v-2"></path></svg>
+                        <h3 class="text-2xl font-bold mb-3">Oncohematologia</h3>
+                        <p class="text-gray-600">
+                            Acompanhamento especializado em cânceres hematológicos (leucemias, linfomas, mieloma), aliando o que há de mais moderno na técnica à humanidade no cuidar.
+                        </p>
+                    </div>
+                    
+                    <!-- Card 3: Modalidades -->
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center border-t-4 border-vinho">
+                        <!-- Ícone SVG: Computador e Pessoa (Online/Presencial) -->
+                        <svg class="w-12 h-12 text-vinho mx-auto mb-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 12.5A5.5 5.5 0 0112.5 7h0A5.5 5.5 0 0118 12.5v.5a5.5 5.5 0 01-11 0v-.5zM12 7V4m0 16v-2"></path></svg>
+                        <h3 class="text-2xl font-bold mb-3">Presencial e online</h3>
+                        <p class="text-gray-600">
+                            Atendimento adulto com a flexibilidade da consulta online ou com o acolhimento do encontro presencial em Florianópolis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="py-20 md:py-28 bg-white/50 border-y-2 border-dourado-claro/50 fade-in-element">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10">
+                    Formação e compromisso
+                </h2>
+                
+                <ul class="text-lg text-gray-700 space-y-4 text-left list-disc list-outside pl-5">
+                    <!-- Seguindo a preferência de formatação de lista -->
+                    <li>
+                        Residência médica em Hematologia e Hemoterapia pelo Centro de Pesquisas Oncológicas (CEPON)
+                    </li>
+                    <li>
+                        Residência médica em Medicina Interna pela Pontifícia Universidade Católica do Rio Grande do Sul (PUCRS)
+                    </li>
+                    <li>
+                        Graduação em Medicina pela Pontifícia Universidade Católica do Paraná (PUCPR)
+                    </li>
+                </ul>
+
+                <div class="mt-12 text-center">
+                    <p class="text-xl font-serif font-bold text-vinho">Drª. Patricia Carvalho</p>
+                    <p class="text-md text-gray-600">CRM/SC: 34649 | RQE/SC: 27216</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Locations Section -->
+        <section class="py-20 md:py-28 fade-in-element">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">
+                    Locais de atendimento
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Local 1 -->
+                    <div class="bg-white p-10 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-3">Agregar Saúde & Bem Estar</h3>
+                        <p class="text-gray-600 mb-6">Atendimento em espaço colaborativo.</p>
+                        <a href="https://www.agregarcoworking.com.br/" 
+                           target="_blank" 
+                           class="cta-button cta-secondary">
+                           Conhecer o espaço
+                        </a>
+                    </div>
+                    
+                    <!-- Local 2 -->
+                    <div class="bg-white p-10 rounded-lg shadow-lg text-center">
+                        <h3 class="text-2xl font-bold mb-3">Clínica Fogaça</h3>
+                        <p class="text-gray-600 mb-6">Atendimento em clínica médica multidisciplinar.</p>
+                        <a href="https://www.clinicafogacaflorianopolis.com.br/clinicamedica/" 
+                           target="_blank" 
+                           class="cta-button cta-secondary">
+                           Conhecer a clínica
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="bg-vinho text-bege py-20 md:py-28 fade-in-element">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
+                    Vamos conversar sobre o seu cuidado?
+                </h2>
+                <p class="text-lg md:text-xl text-bege/90 mb-10">
+                    Estou aqui para ouvir sua história e encontrar o melhor caminho para o seu tratamento. Agende sua consulta presencial ou online.
+                </p>
+                <a href="https://api.whatsapp.com/send/?phone=5548999322544&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Drª.%20Patricia.&type=phone_number&app_absent=0" 
+                   target="_blank" 
+                   class="cta-button cta-whatsapp text-lg px-10 py-4">
+                    <!-- Ícone WhatsApp SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.06 21.94L7.31 20.55C8.76 21.36 10.37 21.82 12.04 21.82C17.5 21.82 21.95 17.37 21.95 11.91C21.95 6.45 17.5 2 12.04 2M12.04 20.13C10.5 20.13 9 19.7 7.7 18.91L7.33 18.69L3.9 19.6L4.82 16.29L4.58 15.91C3.73 14.54 3.28 12.98 3.28 11.33C3.28 7.11 7.26 3.69 12.04 3.69C16.82 3.69 20.8 7.11 20.8 11.33C20.8 15.54 16.82 20.13 12.04 20.13M16.56 14.45C16.31 14.32 15.11 13.75 14.88 13.67C14.66 13.58 14.5 13.54 14.35 13.76C14.19 13.98 13.71 14.55 13.55 14.73C13.4 14.9 13.25 14.92 13 14.8C12.75 14.68 11.91 14.39 10.91 13.49C10.11 12.79 9.59 11.94 9.42 11.66C9.26 11.38 9.36 11.26 9.49 11.13C9.6 11.02 9.73 10.85 9.88 10.67C10.01 10.51 10.06 10.4 10.18 10.18C10.3 9.96 10.25 9.78 10.17 9.63C10.09 9.48 9.58 8.2 9.36 7.67C9.13 7.16 8.91 7.23 8.74 7.23C8.58 7.23 8.42 7.23 8.26 7.23C8.1 7.23 7.82 7.3 7.59 7.52C7.36 7.74 6.79 8.26 6.79 9.38C6.79 10.5 7.63 11.55 7.75 11.7C7.88 11.86 9.5 14.39 11.85 15.35C12.41 15.59 12.82 15.73 13.14 15.84C13.7 16.02 14.18 15.97 14.58 15.91C15.02 15.82 16.06 15.26 16.29 14.69C16.51 14.12 16.51 13.67 16.44 13.54C16.36 13.41 16.21 13.34 16.06 13.26C15.9 13.18 15.75 13.14 15.6 13.1C15.45 13.06 15.3 13.02 15.15 13C14.99 12.96 14.84 12.92 14.7 12.88C14.55 12.84 14.4 12.8 14.25 12.76C14.1 12.72 13.95 12.68 13.8 12.64L16.56 14.45Z" />
+                    </svg>
+                    Agendar pelo WhatsApp
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-bege pt-10 pb-12 text-center fade-in-element">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-gray-600">
+            <p class="font-semibold text-gray-800">Drª. Patricia Carvalho</p>
+            <p>CRM/SC: 34649 | RQE/SC: 27216</p>
+            <p class="mt-2">Hematologia Clínica & Oncohematologia</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para efeito do Header removido (sombra sempre visível) -->
+
+    <!-- NOVO: JavaScript para Fade-in com IntersectionObserver -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleciona todos os elementos que queremos animar
+            const fadeElements = document.querySelectorAll('.fade-in-element');
+
+            // Configurações do Observer
+            const observerOptions = {
+                root: null, // Observa em relação ao viewport
+                rootMargin: '0px',
+                threshold: 0.01 // Ativa quando 1% do elemento está visível (MAIS SENSÍVEL)
+            };
+
+            // Função que será chamada quando um elemento entrar na tela
+            const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Adiciona a classe que torna o elemento visível
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // NOVO: Remove a classe para o fade-out quando sai da tela
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            };
+
+            // Cria o observer
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+            // Coloca o observer para "assistir" cada elemento
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
